@@ -2,16 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-     
-      <title>Document</title>
+    <title>Praks 8</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Numbrifaktid</h1>
-     <form action="">
-    <input type="number" placeholder="Sisesta number" id="numberInput" min=0>
+   <h1>Numbrifaktid</h1>
+ 
+   
+   <form action="">
+   <input type="number" placeholder="Sisesta number" id= "numInput"min="0">
+   <input type = "number" id="incInput"
+   placeholder ="Inkrement">
     </form>
+
     
-    <p id=response>.</p>
- <script src="main.js"></script>
+    <ul id="respOutput"></ul>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="main.js"></script>
+    
 </body>
 </html>

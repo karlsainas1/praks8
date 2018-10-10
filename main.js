@@ -1,44 +1,35 @@
-let numberImput = document.getElementById('numberInput');
-let response =  document.getElementById('response');
+let numInput = document.querySelector('#numInput');
+let respOutput = document.querySelector('#respOutput');
+let incInput = document.querySelector('#incInput');
 
-numberImput.addEventListener('input', event =>{
+const getFact = () => {
+    respOutput.innerHTML = ''
+    let number = numInput.value;
+    let inc = incInput.value;
+    let baseUrl = 'http://numbersapi.com/'
+    // vaja saada sarnane URL
+    // http://numbersapi.com/1..3
+    
+    let url = `${baseUrl}${number}..${parseInt(number) + parseInt(inc)}`;
 
- 
-      let number = numberInput.value;
-      
-      if(number != ''){
+    if (number !='' && inc != '') {
+    axios.get(url)
+    .then(response => {
+        for (let item in response.data){
+            let li = document.createElement('li');
+            li.innerText = response.data[item];
+            
+            respOutput.appendChild(li);
+        }
+    })
     
-        
-          fetch('http://numbersapi.com/'+number)
-                .then(response => response.text())
-                    .then(data => {
-       
-                    response.innerText = data;
-     })
-      
-          
+    .catch(error => {
+        console.log(error);
+    })
+ }
     
-      }
+}
     
-    
-})
-                             
-                             
-                             
-                             
-                             
-                             
-   
-                             
-                             
-                             
-                             
-                             
-    /* fetch('http://numbersapi.com/'+number)
-        .then(response => response.text())
-        .then(data => {
-         
-          factText.innerText = data;
-          
-          
-          */
+// Listening to events
+numInput.addEventListener('input', getFact);
+incInput.addEventListener('input', getFact);
